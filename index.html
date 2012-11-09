@@ -1,12 +1,150 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset='UTF-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="keywords" content="Kalan MacRow, Programming, Design, Code, GitHub, UBC" />
+    <meta name="description" content="Kalan MacRow&mdash;code all the things!">
     <title>Kalan MacRow</title>
+    <style type="text/css">
+        @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+        .content{
+            font-family: 'Droid Sans';
+            padding: 5px;
+        }
+        .content h1{
+            text-align: center;
+            font-size: 2em;
+            font-weight: normal;
+        }
+        
+        .content h2{
+            margin: 2em 0 2em 0;
+            text-align: center;
+            font-weight: normal;
+            font-size: 1em;
+            color: #888;
+            text-transform: uppercase;
+        }
+        
+        .content h2 > span{
+            font-family: Times, serif;
+        }
+        
+        .content p{
+            line-height: 2em;
+        }
+        
+        .content a{
+            color: #000;
+            text-decoration: none;
+            border-bottom: 1px dotted #000;
+        }
+        
+        .content .foot-note{
+            color: #ccc;
+            border-top: 1px solid #eee;
+            padding-top: 1em;
+            font-size: .8em;
+            text-align: center;
+        }
+    
+        .grey{
+            color: #ccc;
+        }
+        
+        .circ{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+        }
+        #circ-1{
+            left: 40px;
+            top: 40px;
+            background-color: #2c3e60;
+        }
+        #circ-2{
+            left: 40px;
+            top: 110px;
+            background-color: #fe4343;
+        }
+        #circ-3{
+            left: 40px;
+            top: 180px;
+            background-color: #fd7676;
+        }
+        #all-the-things{
+            position: fixed;
+            bottom: 0;
+            left: 1em;
+            width: 20%;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles/simplegrid.css" />
+    <script>
+        function resize(){
+            var e = 'all-the-things';
+            if(window.innerWidth <= 768)
+                document.getElementById(e).style.display = 'none';
+            else
+                document.getElementById(e).style.display = 'block';
+        }
+        window.onresize = resize;
+        window.onload = resize;
+    </script>
   </head>
-
   <body>
-      Coming soon...
+      <div class="grid grid-pad">
+          <div class="col-3-12">
+             &nbsp;<span id="wW"></span>
+          </div>
+          <div class="col-6-12">
+            <div class="content">
+                <h1>My name is Kalan&mdash;I code all of the things, this is my GitHub page.</h1>
+                
+                <h2>Welcome</h2>
+                
+                <p> 
+                    Among other things, I built <a href="#">Yulan</a>, <a href="#">Asper</a> and <a href="#">Vespen</a>. 
+                    I'm a computer scientist by trade, with a very prominent design streak. My background is in systems research; 
+                    operating systems, distributed and parallel computing, networking,
+                    virtualization, storage, <i>etc</i>. I've worked for, and with, some of the best minds in computing in
+                    both academic and industrial settings. I have a couple* of degrees in Computer Science from UBC, Vancouver.
+                    I was born in 1989, and I've been writing code for the web (<i>re:</i> doing weird things with JavaScript) since 2003.       
+                </p>
+                
+                <h2> Prototypes </h2>
+                
+                <p>
+                    This page is (will be) a showcase of the UI/UX concepts I'm currently developing&mdash;some for specific projects,
+                    others purely academic, and many exploratory, experimental or just creative brain dumps. The source code for each 
+                    unit will be on GitHub, and I hope you'll find something interesting, or at least useful, to fork and or roll into your own projects.
+                </p>
+                
+                <h2> Philosophae</h2>
+                
+                <p>
+                    I think minimalism is great, and I would describe myself as a <i>minimalist</i>, but I don't advocate applying minimalism to the point
+                    of asceticism: shiny, stylish, polished things are fun and building them is fun. That being said, I do advocate, and try to practice,
+                    a <i>Jobsian</i> attention to detail, and iteration in the pursuit of perfection. I favour a complex implementation over a modular one 
+                    <i>iff</i> achieving peak performance or the perfect experience demands it.   
+                </p>
+                
+                <div class="foot-note">
+                    * MSc. expected 2013
+                </div>
+            </div>
+          </div>
+          <div class="col-3-12">
+             &nbsp;
+          </div>
+      </div>
+      <img id="all-the-things" src="images/all-things-gs.jpg" />
+      <!--
+      <div id="circ-1" class="circ"></div>
+      <div id="circ-2" class="circ"></div>
+      <div id="circ-3" class="circ"></div>
+      -->
   </body>
 </html>
