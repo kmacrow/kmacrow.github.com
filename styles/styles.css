@@ -53,6 +53,22 @@ small{
     color: #ccc;
 }
 
+::selection {
+background:red;
+color:#fff;
+
+}
+
+::-moz-selection {
+background:red;
+color:#fff;
+}
+
+::-webkit-selection {
+background:red;
+color:#fff;
+}
+
 #all_the_things{
     position: fixed;
     bottom: 0;
