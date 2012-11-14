@@ -53,6 +53,42 @@ small{
     color: #ccc;
 }
 
+.social-icon{
+    display: inline-block;
+    cursor: hand;
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    margin: 0 5px 0 5px;
+    -webkit-mask-size: 48px 48px;
+    background: -webkit-linear-gradient(bottom left, #555, #222);
+}
+
+.social-icon:hover{
+    background: red;
+}
+
+#fb_icon{
+    -webkit-mask-image: url(../images/fb.png);
+}
+
+#tw_icon{
+    -webkit-mask-image: url(../images/tw.png);
+}
+
+#gh_icon{
+    -webkit-mask-image: url(../images/gh.png);
+}
+
+#gp_icon{
+    -webkit-mask-image: url(../images/gp.png);
+}
+
+#in_icon{
+    -webkit-mask-image: url(../images/in.png);
+}
+
+
 ::selection {
 background:red;
 color:#fff;
