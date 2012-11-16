@@ -20,7 +20,16 @@
             }
         }
         window.onresize = resize;
-        window.onload = resize;
+        window.onload = function(){
+            // not retina or just small
+            if(window.devicePixelRatio < 2 || window.innerWidth < 768){
+                var p = document.getElementsByTagName('p');
+                for(var i = 0; i < p.length; i++){
+                    p[i].style.fontWeight = 300;
+                }
+            }
+            resize();
+        }
     </script>
   </head>
   <body>
