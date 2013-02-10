@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Yulan UI. The world's most advanced front-end framework.</title>
+        <link rel="stylesheet" type="text/css" href="css/yulan-icons.css" />
+        <style type="text/css">
+            @import url(http://fonts.googleapis.com/css?family=Lato:300,400,900);
+
+            html{
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+            }
+
+            body{
+                padding: 0;
+                margin: 0;
+                font-family: Lato, Helvetica, Arial, sans-serif;
+                background: #000 /*#d94601*/;
+                background-size: cover;
+            }
+
+            h1{
+                font-size: 3em;
+                font-weight: 400;
+                color: #fff;
+                font-weight: regular;
+            }
+
+            h1 > strong {
+                font-weight: 900;
+            }
+
+            a {
+                font-size: 13px;
+                color: #eee;
+                text-decoration: none;
+            }
+            
+            a:hover{
+                color: #fff;
+                text-decoration: underline;
+            }
+
+            small{
+                font-family: Helvetica, sans-serif;
+                text-transform: uppercase;
+                color: #ddd;
+            }
+
+            #icons {
+                width: 90%;
+                margin-top: 2em;
+                text-align: center;
+                color: #fff;
+                font-size: 2em;
+            }
+
+            #overlay{
+                width:100%;
+                height:100%;
+                position: absolute;
+                z-index: 100;
+                background: -webkit-linear-gradient(rgba(0,0,0,.3), #000);
+                background: -moz-linear-gradient(rgba(0,0,0,.3), #000);
+                background: -ms-linear-gradient(rgba(0,0,0,.3), #000);
+                background: -o-linear-gradient(rgba(0,0,0,.3), #000);
+            }
+
+            #hero, #loading{
+                display: none;
+                margin: 200px auto;
+                width: 720px;
+            }
+
+            #hero{
+                position: relative;
+                left: 2.3%;
+            }
+
+            #hero > p{
+                font-size: 1.5em;
+                color: #fefefe;
+                text-align: center;
+                width: 90%;
+                text-shadow: 0 0 5px #888;
+            }
+
+            #loading{
+                display: block;
+                width: 25%;
+            }
+
+            #progress{
+                border-bottom: 1px solid #444;
+                padding: 2px;
+            }
+
+            #progress > div {
+                height: 2px;
+                background: #fff;
+                width: 0%;
+            }
+
+            #footer{
+                display: none;
+                font-size: 13px;
+                color: #aaa;
+                position: fixed;
+                width: 100%;
+                text-align: center;
+                bottom: 20px;
+                z-index: 101;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+        <script>
+            function ldHiDpi(src, start, progress, complete){
+                $.ajax({
+                    'url': src,
+                    'type': 'GET',
+                    'timeout': 60*5*1000,
+                    'success': complete,
+                    'xhr': function(){
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.overrideMimeType('text/plain; charset=x-user-defined'); 
+
+                        xhr.addEventListener('progress', function(evt){
+                            var p;
+                            if(evt.lengthComputable)
+                                p = (evt.loaded / evt.total) * 100;
+                            else
+                                p = 60;
+                            progress(p);
+                        }, false);
+
+                        xhr.addEventListener('loadstart', start, false);
+
+                        return xhr;
+                    }
+
+                })
+            }
+
+            function base64Encode(inputStr) 
+            {
+               var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+               var outputStr = "";
+               var i = 0;
+               
+               while (i < inputStr.length)
+               {
+                   //all three "& 0xff" added below are there to fix a known bug 
+                   //with bytes returned by xhr.responseText
+                   var byte1 = inputStr.charCodeAt(i++) & 0xff;
+                   var byte2 = inputStr.charCodeAt(i++) & 0xff;
+                   var byte3 = inputStr.charCodeAt(i++) & 0xff;
+            
+                   var enc1 = byte1 >> 2;
+                   var enc2 = ((byte1 & 3) << 4) | (byte2 >> 4);
+                   
+                   var enc3, enc4;
+                   if (isNaN(byte2))
+                   {
+                       enc3 = enc4 = 64;
+                   }
+                   else
+                   {
+                       enc3 = ((byte2 & 15) << 2) | (byte3 >> 6);
+                       if (isNaN(byte3))
+                       {
+                           enc4 = 64;
+                       }
+                       else
+                       {
+                           enc4 = byte3 & 63;
+                       }
+                   }
+            
+                   outputStr += b64.charAt(enc1) + b64.charAt(enc2) + b64.charAt(enc3) 
+                                + b64.charAt(enc4);
+                } 
+               
+                return outputStr;
+            }
+            
+            ldHiDpi('sunset.jpg',
+                function(){
+                    // start
+                    $('#loading').fadeIn();
+                },
+                function(p){
+                    // progress
+                    console.log('progress: ', p);
+                    $('#progress > div').css('width', p + '%');
+                },
+                function(data, status, xhr){
+                    // complete
+                    console.log('Hello')
+                    //console.log(data);
+                    var url = 'data:image/jpeg;base64,' + base64Encode(xhr.responseText);
+                    $('body').css('background-image', 'url("' + url + '")');
+                    $('#loading').hide();
+                    $('#hero,#footer').fadeIn();
+                }
+            );
+        
+        </script>
+    </head>
+    <body>
+        <div id="overlay">
+            <div id="hero">
+                <h1><strong>Yulan UI.</strong> Designed with love in<br /> Vancouver.</h1>
+                <p>
+                    Yulan is the world's most advanced
+                    front-end framework, designed for the world's most advanced apps. 
+                </p>
+                <div id="icons">
+                    <i class="icon-html5"></i>
+                    <i class="icon-tools"></i>
+                    <i class="icon-pinboard"></i>
+                    <i class="icon-network"></i>
+                </div>
+            </div>
+            <div id="loading">
+                <div id="progress">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <a href="#">GitHub</a> / 
+            <a href="#">License</a> /
+            <a href="#">Contact</a>
+        </div>
+    </body>
+</html>
