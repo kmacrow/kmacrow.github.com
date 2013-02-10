@@ -1,0 +1,38 @@
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header, footer {
+    text-align: center;
+}
+
+header > h2 {
+    font-size: 64px;
+}
+
+header > h1 {
+    color: #555;
+    font-size: 80px;
+}
+
+header > p {
+    font-size: 32px;
+}
+
+header > h1 > span {
+    color: #000;
+}
+
+footer > small {
+    font-size: 10px;
+    color: #ddd;
+}
+
+a {
+    text-decoration: none;
+}
+
+.content > section:first-child {
+    text-align: center;
+}
