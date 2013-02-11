@@ -2,7 +2,7 @@
 <html lang="end">
   <head>
     <meta charset="utf-8">
-    <title>jquery.github.js &bull; GitHub</title>
+    <title>jquery.github.js · GitHub</title>
     <meta name="author" content="Kalan MacRow">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="The easiest way to display your most recent GitHub contributions.">
@@ -14,7 +14,7 @@
 
   </head>
   <body>
-    <a href="https://github.com/kmacrow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/kmacrow"><img id="fork_me" style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
     <div class="grid grid-pad">
       <div class="col-1-1">
         <div class="content">
@@ -22,7 +22,9 @@
             <h2><i class="icon-github-2"></i></h2>
             <h1>jquery.<span>github</span>.js</h1>
             <p>
-            The easiest way to display your most recent GitHub<br /> contributions with jQuery and Bootstrap.
+            The easiest way to display your most recent GitHub
+            <script>if(window.innerWidth > 767) document.write('<br />')</script>
+            contributions with jQuery and Bootstrap.
             </p> 
           </header>
           <section style="text-align:center">
@@ -33,16 +35,16 @@
             <iframe src="http://ghbtns.com/github-btn.html?user=kmacrow&type=follow"
   allowtransparency="true" frameborder="0" scrolling="0" width="132" height="20"></iframe>
             <br /><br /><br />
-            <a href="https://github.com/kmacrow/jquery.github.js" class="btn btn-large btn-inverse">Download <strong>jquery.github.min.js</strong></a>
+            <a href="https://github.com/kmacrow/jquery.github.js" class="btn btn-large btn-success">Download <strong>jquery.github.min.js</strong></a>
           </section>
           <section>
 
           </section>
           <footer>
+            <br />
             <small>
               Copyright &copy; Kalan MacRow, <script>document.write(new Date().getFullYear())</script>&mdash;
               MIT Licensed.<br />
-              The jQuery and GitHub names are property of their respective owners.<br />
             </small>
           </footer>  
         </div>
